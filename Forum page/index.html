@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <div id="topHeader">
+            <h1>Simple Forum</h1>
+        </div>
+        <input type="button" value="Add new post" id="formToggleButton" />
+        <div class="newPost">
+            <h3>Name:</h3>
+            <input type="text" id="username" placeholder="Name" />
+            <h3>Post:</h3>
+            <textarea id="postContent" placeholder="Text"></textarea>
+            <input type="submit" value="Submit" id="postButton">
+        </div>
+        <div class="postContainer" id="postInput">
+        </div>
+    </div>
+<script>
+    document.getElementById("formToggleButton").addEventListener("click", function () {
+        let makeNewPost = document.querySelector(".newPost");
+            if (makeNewPost.style.display === "block") {
+                makeNewPost.style.display = "none";
+            } else {
+                makeNewPost.style.display = "block";
+            }
+    });
+    document.getElementById("postButton").addEventListener("click", function () {
+        let postContent = document.getElementById("postContent").value;
+        let username = document.getElementById("username").value;
+            if ((postContent === "") || (username === "")) {
+                alert("Enter username and content before posting.");
+            } else {
+                const newElement = document.createElement("div");
+                newElement.className = "newPostContainer";
+                newElement.innerHTML = `<div class = newPostUsername><div class = "postUsername">${username}</div>
+                <button class="button" id="postDeleteButton" onclick="deletePost(this);">
+                    Delete</button></div><div class="postText">${postContent}</div>`;
+                document.getElementById("postInput").appendChild(newElement);
+                document.getElementById("postContent").value = "";
+                document.getElementById("username").value = "";
+            }
+    });
+    function deletePost(input) {
+        document.getElementById("postInput").removeChild(input.parentNode.parentNode);
+    }
+</script>
+</body>
+</html>

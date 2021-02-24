@@ -1,0 +1,28 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border: black solid 1px;
+    padding: 5px;
+    width: 1000px;
+}
+
+.boxGreen {
+    background-color: lightgreen;
+    margin-left: 50px;
+    margin-right: 50px;
+    border: black solid 1px;
+    width: 95px;
+    height: 150px;
+}
+
+.boxRed {
+    background-color: crimson;
+    border: black solid 1px;
+    width: 150px;
+    height: 150px;
+}
+
+.wideBox {
+    width: 390px;
+}
